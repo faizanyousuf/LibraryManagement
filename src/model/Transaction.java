@@ -9,10 +9,11 @@ public class Transaction {
     private LocalDate dueDate;
     private LocalDate returnDate;
     private double fine;
-    private String status;
+    // private String status;
+    private TransactionStatus status;
 
 
-       public Transaction(int transactionId, int bookId, int memberId, LocalDate issueDate, LocalDate dueDate,LocalDate returnDate, double fine, String status) {
+       public Transaction(int transactionId, int bookId, int memberId, LocalDate issueDate, LocalDate dueDate,LocalDate returnDate, double fine, TransactionStatus status) {
         this.transactionId = transactionId;
         this.bookId = bookId;
         this.memberId = memberId;
@@ -60,11 +61,11 @@ public class Transaction {
         this.fine = fine;
     }
 
-    public String getStatus() {
+    public TransactionStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TransactionStatus status) {
         this.status = status;
     }
 

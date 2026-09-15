@@ -19,6 +19,15 @@ public class Book{
     }
 
 
+     public boolean equals(Book that){
+              if(that == null){
+                return false;
+              }else if (this.id == that.id){
+                    return true;
+              }else {
+                return false;
+              }
+     }
     public String getISBN() {
         return ISBN;
     }
