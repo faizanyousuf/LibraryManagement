@@ -12,7 +12,7 @@ public class main {
         //  List<Member> members = new ArrayList<>();
         //  List<Transaction> transactions = new ArrayList<>();
 
-         BookServices b = new BookServices();
+         BookServices lib = new BookServices();
 
 
         Book b1 = new Book(21,"ddfdfdfk","alchemis","brian","fiction",20,244);
@@ -50,13 +50,13 @@ public class main {
         //  }
 
 
-        b.addBook(b1);
-        b.addBook(b2);
-        b.addBook(b3);
-        b.displayBooks();
+        lib.addBook(b1);
+         lib.addBook(b2);
+        lib.addBook(b3);
+        lib.displayBooks();
 
-         b.removeBook(b2);
-        b.displayBooks();
-        System.out.println(b.searchBook(2));
+         lib.removeBook(b2);
+        lib.displayBooks();
+        System.out.println(lib.searchBook(2));
     }
 }

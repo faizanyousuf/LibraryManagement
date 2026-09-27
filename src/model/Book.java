@@ -18,7 +18,6 @@ public class Book{
         this.availableCopies = availableCopies;
     }
 
-
      public boolean equals(Book that){
               if(that == null){
                 return false;

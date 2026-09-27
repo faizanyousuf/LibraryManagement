@@ -1,25 +1,32 @@
 package service;
-import model.Book;
+
 import java.util.ArrayList;
+import model.Book;
+import java.util.List;
 
 public class BookServices {
 
-     private ArrayList<Book> books;
+    private ArrayList<Book> books;
 
-    public BookServices (){
-            books = new ArrayList<>();
+    public BookServices() {
+        books = new ArrayList<>();
     }
 
-    public ArrayList<Book> 
-
-   public void addBook(Book book){
-          books.add(book);
+    // Returnig full list of available books
+    public ArrayList<Book> getAllBooks() {
+        return books;
     }
 
-   public void removeBook(Book book){
+    // Adding a new Book
+    public void addBook(Book book) {
+        books.add(book);
+    }
 
-        for(Book b : books){
-            if (b.equals(book)){
+    // Removing a book if present
+    public void removeBook(Book book) {
+
+        for (Book b : books) {
+            if (b.equals(book)) {
                 books.remove(book);
                 System.out.println("Book Removed Successfully!");
             }
@@ -27,27 +34,54 @@ public class BookServices {
         System.out.println("Book Not Found!");
     }
 
-    public boolean searchBook(int id){
-            
-        for(Book b : books){
-            if(b.getId() == id){
-                return true;
+    // Search for a book by Id
+    public Book searchBook(int id) {
+
+        for (Book b : books) {
+            if (b.getId() == id) {
+                return b;
             }
         }
-        return false;
-    }
-    public boolean searchBook(String title){
-
-        return true;
+        return null;
     }
 
-    public void updateBook(Book book){
-
+    // Search For a Book by Title
+    public List<Book> searchBook(String title) {
+        List<Book> result = new ArrayList<>();
+        if (title == null) {
+            return result;
+        } else {
+            for (Book b : books) {
+                if (b.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                    result.add(b);
+                }
+            }
+        }
+        return result;
     }
 
-    public void displayBooks(){
-             
-        for(Book b : books){
+    // Updating an Existing Book
+    public boolean updateBook(Book book) {
+
+        Book existingBook = searchBook(book.getId());
+
+        if (existingBook == null) {
+            return false;
+        } else {
+            existingBook.setTitle(book.getTitle());
+            existingBook.setISBN(book.getISBN());
+            existingBook.setAuthor(book.getAuthor());
+            existingBook.setCategory(book.getCategory());
+            existingBook.setTotalCopies(book.getTotalCopies());
+            existingBook.setAvailableCopies(book.getAvailableCopies());
+            return true;
+        }
+    }
+
+    // Displaying all Books
+
+    public void displayBooks() {
+        for (Book b : books) {
             System.out.println(b.toString());
         }
     }
